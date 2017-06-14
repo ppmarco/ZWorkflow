@@ -1,0 +1,98 @@
+<mvc:View controllerName="Workflow.controller.Object" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	<Page  navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}" busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+		<content>
+			<ObjectHeader title="{ZWfProcid} {ZWfTaskid} {ZWfGiorni} {ZWfDOcument} {ZDtStart}"></ObjectHeader>
+		</content>
+		
+		
+			<Table id="table2" width="auto" class="sapUiResponsiveMargin" items="{ path: '/TaskSet', 
+			sorter: { path: 'ZWfUtente', descending: false },
+			parameters: {expand : 'TaskToHst'} }"
+				noDataText="{i18n>tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader2" text="{worklistView>/worklistTableTitle}"/>
+					</Toolbar>
+				</headerToolbar>
+						<columns>
+				<Column id="nameColumn2">
+					<Text text="Utente" id="nameColumnTitle2"/>
+				</Column>
+				<Column id="nameColumn3">
+					<Text text="Inizio" id="nameColumnTitle3"/>
+				</Column>
+				<Column id="nameColumn4">
+					<Text text="Ora" id="nameColumnTitle4"/>
+				</Column>
+				<Column id="nameColumn5">
+					<Text text="Descrizione" id="nameColumnTitle5"/>
+				</Column>
+				<Column id="nameColumn6">
+					<Text text="Fine" id="nameColumnTitle6"/>
+				</Column>
+				<Column id="nameColumn7">
+					<Text text="Ora" id="nameColumnTitle7"/>
+				</Column>
+				<Column id="nameColumn8">
+					<Text text="Processo" id="nameColumnTitle8"/>
+				</Column>
+				<Column id="nameColumn9">
+					<Text text="Task" id="nameColumnTitle9"/>
+				</Column>
+			    <Column id="nameColumn10">
+					<Text text="Azione" id="nameColumnTitle10"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem  type="inactive">
+					<cells>
+						<ObjectIdentifier title="{objectView>TaskHstSet/ZWfUtente}"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{ path: '{objectView>TaskSet(,)/ZDtStart', formatter: '.formatter.formatDate' }"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{objectView>TaskHstSet/ZHhStart}"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{objectView>TaskHstSet/ZWfText}"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{ path: 'objectView>TaskHstSet/ZDtStop', formatter: '.formatter.formatDate' }"/>
+					</cells>
+						<cells>
+						<ObjectIdentifier title="{objectView>TaskHstSet/ZHhStop}"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{ path: 'objectView>TaskHstSet/ZWfProcid', formatter: '.formatter.formatPadding' }"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{ path: 'objectView>TaskHstSet/ZWfTaskid', formatter: '.formatter.formatPadding' }"/>
+					</cells>
+					<cells>
+						<ObjectIdentifier title="{objectView>TaskHstSet/ZWfAzione}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+			</Table>
+		<footer>
+			<OverflowToolbar id="footerToolbar">
+				<ToolbarSpacer/>
+				<Button id="shareButton" tooltip="{i18n>shareTooltip}" icon="sap-icon://action" press="onSharePress">
+					<dependents>
+						<ActionSheet id="shareSheet" showCancelButton="true" placement="Top">
+							<buttons>
+								<Button id="shareEmail" icon="sap-icon://email" text="{i18n>shareSendEmail}" press="onShareEmailPress"/>
+								<Button id="shareInJam" icon="sap-icon://jam" text="{i18n>shareOnJamTitle}" press="onShareInJamPress" visible="{FLP>/isShareInJamActive}"/>
+								<footerbar:AddBookmarkButton id="shareTile" appData="{ path: 'objectView>/saveAsTileTitle', formatter: '.formatter.shareTileData' }"/>
+							</buttons>
+						</ActionSheet>
+					</dependents>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,136 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZWORKFLOW_SRV" xml:lang="it" sap:schema-version="1">
+            <EntityType Name="PDFSet" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PDoc"/>
+                    <PropertyRef Name="PProc"/>
+                </Key>
+                <Property Name="PDoc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" MaxLength="128" sap:label="Tipo MIME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PProc" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Tipo processo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="XString" Type="Edm.Binary" Nullable="false" sap:label="Stringa binaria" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TaskHst" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZWfProcid"/>
+                </Key>
+                <Property Name="ZWfUtente" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZDtStart" Type="Edm.DateTime" Precision="7" sap:label="Data inizio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHhStart" Type="Edm.Time" Precision="0" sap:label="Ora inizio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfText" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Descrizione attività" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZDtStop" Type="Edm.DateTime" Precision="7" sap:label="Data inizio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHhStop" Type="Edm.Time" Precision="0" sap:label="Ora inizio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfProcid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID proc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfTaskid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID task" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfAzione" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Z_WF_AZIONE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TaskSet" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZWfProcid"/>
+                    <PropertyRef Name="ZWfTaskid"/>
+                </Key>
+                <Property Name="ZWfProcesso" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Tipo processo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfDocument" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfText" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Descrizione attività" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfStep" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Step" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfTipodoc" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Tipo Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZDtStart" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data inizio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHhStart" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Ora inizio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfUtente" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfProcid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID proc." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZWfTaskid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZWfValuta" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Valuta" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="ZWfValoreDocumento" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unit="ZWfValuta" sap:label="Valore Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfGiorni" Type="Edm.Int32" Nullable="false" sap:label="Giorni attesa" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZWfLiv" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Punteggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IconId" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Stato attività" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Origine" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Origine" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Business partner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="TaskToHst" Relationship="ZWORKFLOW_SRV.TaskSetToHistory" FromRole="FromRole_TaskSetToHistory" ToRole="ToRole_TaskSetToHistory"/>
+                <NavigationProperty Name="TaskToProcess" Relationship="ZWORKFLOW_SRV.TaskToProcess" FromRole="FromRole_TaskToProcess" ToRole="ToRole_TaskToProcess"/>
+            </EntityType>
+            <EntityType Name="ProcSet" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZWfProcid"/>
+                </Key>
+                <Property Name="Procid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID proc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfTaskid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID task" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfProcid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID proc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfStep" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Step" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfSubop" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Sottoperazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfText" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfStepOk" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Step WF OK" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfStepKo" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Step WF KO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZWfSkip" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Z_WF_SKIP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <ComplexType Name="ExMessage">
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Cat. messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Classe messaggi" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Numero messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:label="Testo mess." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="N. registro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogMsgNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="N. messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV1" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Variabile messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV2" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Variabile messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV3" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Variabile messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV4" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Variabile messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Parameter" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Nome parametro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Row" Type="Edm.Int32" Nullable="false" sap:label="Riga parametro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Nome campo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="System" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Sistema logico" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="TaskToProcess" sap:content-version="1">
+                <End Type="ZWORKFLOW_SRV.TaskSet" Multiplicity="1" Role="FromRole_TaskToProcess"/>
+                <End Type="ZWORKFLOW_SRV.ProcSet" Multiplicity="*" Role="ToRole_TaskToProcess"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TaskToProcess">
+                        <PropertyRef Name="ZWfTaskid"/>
+                        <PropertyRef Name="ZWfProcid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TaskToProcess">
+                        <PropertyRef Name="ZWfTaskid"/>
+                        <PropertyRef Name="ZWfProcid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TaskSetToHistory" sap:content-version="1">
+                <End Type="ZWORKFLOW_SRV.TaskSet" Multiplicity="1" Role="FromRole_TaskSetToHistory"/>
+                <End Type="ZWORKFLOW_SRV.TaskHst" Multiplicity="*" Role="ToRole_TaskSetToHistory"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TaskSetToHistory">
+                        <PropertyRef Name="ZWfTaskid"/>
+                        <PropertyRef Name="ZWfProcid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TaskSetToHistory">
+                        <PropertyRef Name="ZWfTaskid"/>
+                        <PropertyRef Name="ZWfProcid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZWORKFLOW_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="PDFSet" EntityType="ZWORKFLOW_SRV.PDFSet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TaskHstSet" EntityType="ZWORKFLOW_SRV.TaskHst" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TaskSet" EntityType="ZWORKFLOW_SRV.TaskSet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ProcSet" EntityType="ZWORKFLOW_SRV.ProcSet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="TaskSetToHistorySet" Association="ZWORKFLOW_SRV.TaskSetToHistory" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TaskSet" Role="FromRole_TaskSetToHistory"/>
+                    <End EntitySet="TaskHstSet" Role="ToRole_TaskSetToHistory"/>
+                </AssociationSet>
+                <AssociationSet Name="TaskToProcessSet" Association="ZWORKFLOW_SRV.TaskToProcess" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TaskSet" Role="FromRole_TaskToProcess"/>
+                    <End EntitySet="ProcSet" Role="ToRole_TaskToProcess"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/SAP/ZWORKFLOW_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/SAP/ZWORKFLOW_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
