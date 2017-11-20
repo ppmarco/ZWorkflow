@@ -4,60 +4,26 @@
 			<Table id="table" width="auto" class="sapUiResponsiveMargin" items="{ path: '/TaskSet', sorter: { path: 'ZWfUtente', descending: false } }"
 				noDataText="{i18n>tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
 				updateFinished="onUpdateFinished">
+				<!-- Toolbar tabella -->
 				<headerToolbar>
 					<Toolbar>
 						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
 					</Toolbar>
 				</headerToolbar>
-						<columns>
-				<Column id="nameColumn">
-				 	<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
-				</Column>
-				<Column id="nameColumn2">
-					<Text text="Task" id="nameColumnTitle2"/>
-				</Column>
-				<Column id="nameColumn3">
-					<Text text="Processo" id="nameColumnTitle3"/>
-				</Column>
-				<Column id="nameColumn4">
-					<Text text="Documento" id="nameColumnTitle4"/>
-				</Column>
-				<Column id="nameColumn5">
-					<Text text="Stato" id="nameColumnTitle5"/>
-				</Column>
-				<Column id="nameColumn6">
-					<Text text="Data inizio" id="nameColumnTitle6"/>
-				</Column>
-				<Column id="nameColumn7">
-					<Text text="Criticità" id="nameColumnTitle7"/>
-				</Column>
-			</columns>
-			<items>
-				<ColumnListItem id="cli" type="Navigation" press="onPress">
-					<cells>
-						<ObjectIdentifier title="{ZWfUtente}"/>
-					</cells>
-					<cells>
-						<ObjectIdentifier title="{ path: 'ZWfTaskid', formatter: '.formatter.formatPadding' }"/>
-					</cells>
-					<cells>
-						<ObjectIdentifier title="{ path: 'ZWfProcid', formatter: '.formatter.formatPadding' }"/>
-					</cells>
-					<cells>
-						<ObjectIdentifier title="{ZWfDocument}"/>
-					</cells>
-					<cells>
-						<ObjectIdentifier title="{ZWfGiorni}"/>
-					</cells>
-					<cells>
-						<ObjectIdentifier title="{ path: 'ZDtStart', formatter: '.formatter.formatDate' }"/>
-					</cells>
-					<cells>
-						<ObjectStatus icon="{ path: 'ZWfGiorni', formatter: '.formatter.iconType' }"
-							state="{path : 'ZWfGiorni', formatter: '.formatter.statusType' }"/>
-					</cells>
-				</ColumnListItem>
-			</items>
+				<!-- Colonne tabella -->
+			     <columns>
+				 <Column id="docColumn">
+					<Text text="{i18n>tableDocColumnTitle}" id="docColumnTitle"/>
+				 </Column>
+			     </columns>
+		             <!-- Items nella tabella -->
+			      <items>
+				      <ColumnListItem id="cli" type="Navigation" press="onPress">
+					      <cells>
+						      <ObjectIdentifier title="{ZWfDocument}"/>
+					      </cells>
+				      </ColumnListItem>
+			      </items>
 			</Table>
 		</content>
 		<footer>
